@@ -24,7 +24,11 @@ jobs:
         run: |
           flutter create --platforms=android --org com.newsapp --project-name telugu_news_bot .
 
-      # Target SDK & Compile SDK ని లేటెస్ట్ Android 34 (Android 14) కి సెట్ చేయడం
+      # ఇంటర్నెట్ పర్మిషన్ యాడ్ చేసే కోడ్ ఇది:
+      - name: Add Internet Permission
+        run: |
+          sed -i '/<manifest/a \    <uses-permission android:name="android.permission.INTERNET" />' android/app/src/main/AndroidManifest.xml
+
       - name: Update Target Android SDK
         run: |
           sed -i 's/targetSdkVersion .*/targetSdkVersion 34/' android/app/build.gradle
@@ -33,7 +37,6 @@ jobs:
       - name: Get Packages
         run: flutter pub get
 
-      # సింగిల్ యూనివర్సల్ APK బిల్డ్ చేయడం
       - name: Build Universal APK
         run: flutter build apk --release
 
