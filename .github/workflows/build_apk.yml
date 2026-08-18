@@ -20,6 +20,11 @@ jobs:
         with:
           flutter-version: '3.19.0'
 
+      # ఆండ్రాయిడ్ ప్రాజెక్ట్ ఫైల్స్‌ను ఆటోమేటిక్‌గా క్రియేట్ చేసే స్టెప్
+      - name: Recreate Android Project Template
+        run: |
+          flutter create --platforms=android --org com.newsapp .
+
       - name: Get Packages
         run: flutter pub get
 
@@ -31,3 +36,4 @@ jobs:
         with:
           name: news-app-apk
           path: build/app/outputs/flutter-apk/*.apk
+          
