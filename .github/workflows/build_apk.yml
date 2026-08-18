@@ -20,10 +20,10 @@ jobs:
         with:
           flutter-version: '3.19.0'
 
-      # ఆండ్రాయిడ్ ప్రాజెక్ట్ ఫైల్స్‌ను ఆటోమేటిక్‌గా క్రియేట్ చేసే స్టెప్
+      # ప్రాజెక్ట్ పేరును telugu_news_bot గా స్పష్టంగా సెట్ చేయడం
       - name: Recreate Android Project Template
         run: |
-          flutter create --platforms=android --org com.newsapp .
+          flutter create --platforms=android --org com.newsapp --project-name telugu_news_bot .
 
       - name: Get Packages
         run: flutter pub get
